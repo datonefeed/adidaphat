@@ -1,14 +1,3 @@
-import floralImg from "@/assets/kasturi-roy-floral.jpg";
-import varoomImg from "@/assets/nik-varoom.jpg";
-import synthwaveImg from "@/assets/nik-synthwave.jpg";
-import deerImg from "@/assets/omk-deer.jpg";
-import holographicImg from "@/assets/simon-lee-holographic.jpg";
-import catImg from "@/assets/syarafina-cat.jpg";
-import birdImg from "@/assets/nypl-bird.jpg";
-import jewelryImg from "@/assets/nypl-jewelry.jpg";
-import spheresImg from "@/assets/victoria-spheres.jpg";
-import type { StaticImageData } from "next/image";
-
 export interface Project {
   id: string;
   title: string;
@@ -16,7 +5,7 @@ export interface Project {
   description: string;
   year: string;
   client?: string;
-  images: (string | StaticImageData)[];
+  images: string[];
   color: string;
   aspectRatio: 'portrait' | 'landscape' | 'square';
 }
@@ -30,7 +19,7 @@ export const projects: Project[] = [
     year: "2024",
     client: "Dự án cá nhân",
     images: [
-      spheresImg,
+      "/assets/victoria-spheres.jpg",
       "https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=800&q=80",
       "https://images.unsplash.com/photo-1557672172-298e090bd0f1?w=800&q=80"
     ],
@@ -45,7 +34,7 @@ export const projects: Project[] = [
     year: "2024",
     client: "Vogue Brasil",
     images: [
-      varoomImg,
+      "/assets/nik-varoom.jpg",
       "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=800&q=80"
     ],
     color: "#4ECDC4",
@@ -59,7 +48,7 @@ export const projects: Project[] = [
     year: "2023",
     client: "D-Edge Club",
     images: [
-      synthwaveImg,
+      "/assets/nik-synthwave.jpg",
       "https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?w=800&q=80"
     ],
     color: "#A855F7",
@@ -73,7 +62,7 @@ export const projects: Project[] = [
     year: "2024",
     client: "Botanical Essence",
     images: [
-      floralImg,
+      "/assets/kasturi-roy-floral.jpg",
       "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80"
     ],
     color: "#10B981",
@@ -87,7 +76,7 @@ export const projects: Project[] = [
     year: "2023",
     client: "Galeria Vermelho",
     images: [
-      deerImg,
+      "/assets/omk-deer.jpg",
       "https://images.unsplash.com/photo-1549490349-8643362247b5?w=800&q=80"
     ],
     color: "#F59E0B",
@@ -101,7 +90,7 @@ export const projects: Project[] = [
     year: "2024",
     client: "ADG Brasil",
     images: [
-      holographicImg,
+      "/assets/simon-lee-holographic.jpg",
       "https://images.unsplash.com/photo-1559028012-481c04fa702d?w=800&q=80"
     ],
     color: "#EC4899",
@@ -115,7 +104,7 @@ export const projects: Project[] = [
     year: "2023",
     client: "Flow Magazine",
     images: [
-      catImg,
+      "/assets/syarafina-cat.jpg",
       "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80"
     ],
     color: "#6366F1",
@@ -129,7 +118,7 @@ export const projects: Project[] = [
     year: "2024",
     client: "Aurora AI",
     images: [
-      birdImg,
+      "/assets/nypl-bird.jpg",
       "https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=800&q=80"
     ],
     color: "#14B8A6",
@@ -143,7 +132,7 @@ export const projects: Project[] = [
     year: "2024",
     client: "Liên Hoan Nghệ Thuật Đô Thị",
     images: [
-      jewelryImg,
+      "/assets/nypl-jewelry.jpg",
       "https://images.unsplash.com/photo-1502759683299-cdcd6974244f?w=800&q=80"
     ],
     color: "#1F2937",
