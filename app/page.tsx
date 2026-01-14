@@ -1,126 +1,43 @@
 "use client";
 
-import { useState, useMemo, useEffect, useRef } from "react";
 import Link from "next/link";
-import Image from "next/image";
-import { projects } from "@/data/projects";
-import Navbar from "@/components/Navbar";
-import FloatingNav from "@/components/FloatingNav";
+import { Button } from "@/components/ui/button";
 
-export default function HomePage() {
-  const [selectedCategory, setSelectedCategory] = useState<string>("everything");
-  const sectionRef = useRef<HTMLElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
-  const filteredProjects = useMemo(() => {
-    if (selectedCategory === "everything") {
-      return projects;
-    }
-    return projects.filter((project) =>
-      project.tags.some((tag) => tag.toLowerCase() === selectedCategory.toLowerCase())
-    );
-  }, [selectedCategory]);
-
+export default function LandingPage() {
   return (
-    <>
-      <main className="min-h-screen bg-background page-transition">
-        <Navbar 
-          selectedCategory={selectedCategory}
-          onCategoryChange={setSelectedCategory}
-        />
-        
-        {/* Project Grid */}
-        <section ref={sectionRef} className="pt-32 md:pt-24 pb-24 px-6">
-          {/* Mobile: Pinterest-style 2-column grid with equal sizes */}
-          <div className="grid grid-cols-2 gap-3 md:hidden">
-            {filteredProjects.map((project, index) => (
-              <Link
-                key={project.id}
-                href={`/project/${project.id}`}
-                className={`project-card group block transition-all duration-700 ${
-                  isVisible
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-16"
-                }`}
-                style={{ transitionDelay: `${index * 50}ms` }}
-              >
-                <div className="relative overflow-hidden rounded-2xl bg-muted aspect-[4/5]">
-                  <Image
-                    src={project.images[0]}
-                    alt={project.title}
-                    fill
-                    className="object-cover"
-                    loading="lazy"
-                  />
-                </div>
+    <main className="min-h-screen bg-background flex items-center justify-center p-6">
+      <div className="max-w-4xl mx-auto text-center space-y-8">
+        <div className="space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-1000">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight">
+            Chào mừng đến với
+            <span className="block mt-2 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+              Portfolio của tôi
+            </span>
+          </h1>
+          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
+            Khám phá các dự án sáng tạo và thiết kế của tôi
+          </p>
+        </div>
 
-                <div className="pt-2 pb-3">
-                  <h3 className="text-xs font-medium group-hover:opacity-70 transition-opacity duration-300 line-clamp-1">
-                    {project.title}
-                  </h3>
-                  <p className="text-[10px] text-muted-foreground mt-0.5 line-clamp-1">
-                    {project.tags.slice(0, 2).map((tag) => `#${tag}`).join(" ")}
-                  </p>
-                </div>
-              </Link>
-            ))}
-          </div>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300">
+          <Link href="/home">
+            <Button size="lg" className="text-lg px-8 py-6 rounded-full">
+              Xem Portfolio
+            </Button>
+          </Link>
+          <Link href="/about">
+            <Button size="lg" variant="outline" className="text-lg px-8 py-6 rounded-full">
+              Về tôi
+            </Button>
+          </Link>
+        </div>
 
-          {/* Desktop: Masonry layout */}
-          <div className="hidden md:block columns-2 lg:columns-3 3xl:columns-4 gap-4">
-            {filteredProjects.map((project, index) => (
-              <Link
-                key={project.id}
-                href={`/project/${project.id}`}
-                className={`project-card group block mb-4 break-inside-avoid transition-all duration-700 ${
-                  isVisible
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-16"
-                }`}
-                style={{ transitionDelay: `${index * 80}ms` }}
-              >
-                <div className="relative overflow-hidden rounded-3xl bg-muted">
-                  <Image
-                    src={project.images[0]}
-                    alt={project.title}
-                    width={800}
-                    height={600}
-                    className="w-full h-auto object-cover"
-                    loading="lazy"
-                  />
-                </div>
-
-                <div className="pt-3 pb-2">
-                  <h3 className="text-sm font-medium group-hover:opacity-70 transition-opacity duration-300">
-                    {project.title}
-                  </h3>
-                  <p className="text-xs text-muted-foreground mt-1">
-                    {project.tags.slice(0, 2).map((tag) => `#${tag}`).join(" ")}
-                  </p>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </section>
-      </main>
-      <FloatingNav />
-    </>
+        <div className="pt-12 animate-in fade-in duration-1000 delay-500">
+          <p className="text-sm text-muted-foreground">
+            Nhấn vào nút trên để bắt đầu khám phá
+          </p>
+        </div>
+      </div>
+    </main>
   );
 }

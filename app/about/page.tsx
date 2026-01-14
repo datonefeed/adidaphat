@@ -1,15 +1,12 @@
 "use client";
 
 import { useEffect } from "react";
-import { useSearchParams } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import FloatingNav from "@/components/FloatingNav";
 import ScrollRevealText from "@/components/ScrollRevealText";
 import { Mail, MapPin, Instagram, Linkedin, Dribbble } from "lucide-react";
 
 export default function AboutPage() {
-  const searchParams = useSearchParams();
-
   useEffect(() => {
     const hash = window.location.hash;
     if (hash === "#contact") {
@@ -22,7 +19,7 @@ export default function AboutPage() {
     } else {
       window.scrollTo(0, 0);
     }
-  }, [searchParams]);
+  }, []);
 
   const clients = [
     "Vogue Brasil",

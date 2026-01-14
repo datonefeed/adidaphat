@@ -7,6 +7,7 @@ import catImg from "@/assets/syarafina-cat.jpg";
 import birdImg from "@/assets/nypl-bird.jpg";
 import jewelryImg from "@/assets/nypl-jewelry.jpg";
 import spheresImg from "@/assets/victoria-spheres.jpg";
+import type { StaticImageData } from "next/image";
 
 export interface Project {
   id: string;
@@ -15,7 +16,7 @@ export interface Project {
   description: string;
   year: string;
   client?: string;
-  images: string[];
+  images: (string | StaticImageData)[];
   color: string;
   aspectRatio: 'portrait' | 'landscape' | 'square';
 }

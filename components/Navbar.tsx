@@ -49,7 +49,7 @@ const Navbar = ({ selectedCategory, onCategoryChange }: NavbarProps) => {
   const [isDark, setIsDark] = useState(false);
   const pathname = usePathname();
   
-  const isHomePage = pathname === "/";
+  const isHomePage = pathname === "/home";
   
   const categories = ["everything", ...getCategories().slice(0, 4)];
 

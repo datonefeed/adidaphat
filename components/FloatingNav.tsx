@@ -15,12 +15,12 @@ const FloatingNav = () => {
   const [contactOpen, setContactOpen] = useState(false);
 
   const navItems = [
-    { name: "Tác Phẩm", path: "/" },
+    { name: "Tác Phẩm", path: "/home" },
     { name: "Giới Thiệu", path: "/about" },
   ];
 
   const isActive = (path: string) => {
-    if (path === "/") return pathname === "/" || pathname === "/index" || pathname === "/explore";
+    if (path === "/home") return pathname === "/home";
     return pathname?.startsWith(path);
   };
 
