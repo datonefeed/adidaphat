@@ -2,41 +2,52 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import HeroSection from "@/components/hero-section";
+import  { ThreeDPhotoCarousel } from "@/components/ui/3d-carousel";
+import AboutUsSection from "@/components/about-us-section";
+import { DemoOne } from "@/components/clip-path-section";
+import Footer2 from "@/components/footer2";
+import ContactSection from "@/components/contact-section";
 
 export default function LandingPage() {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 100);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <main className="min-h-screen bg-background flex items-center justify-center p-6">
-      <div className="max-w-4xl mx-auto text-center space-y-8">
-        <div className="space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-1000">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight">
-            Chào mừng đến với
-            <span className="block mt-2 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-              Portfolio của tôi
-            </span>
-          </h1>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-            Khám phá các dự án sáng tạo và thiết kế của tôi
-          </p>
-        </div>
+    <main className="min-h-screen bg-background w-full">
+      <div className="w-full">
+        {/* Hero Section */}
+        <HeroSection />
+        
+        {/* About Us Section */}
+        <AboutUsSection />
+        
+        {/* 3D Carousel Section */}
+        <section className="w-full bg-background">
+          <div className="container mx-auto px-4">
+            <ThreeDPhotoCarousel />
+          </div>
+        </section>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300">
-          <Link href="/home">
-            <Button size="lg" className="text-lg px-8 py-6 rounded-full">
-              Xem Portfolio
-            </Button>
-          </Link>
-          <Link href="/about">
-            <Button size="lg" variant="outline" className="text-lg px-8 py-6 rounded-full">
-              Về tôi
-            </Button>
-          </Link>
-        </div>
+        {/* Clip Path Section */}
+        <DemoOne />
 
-        <div className="pt-12 animate-in fade-in duration-1000 delay-500">
-          <p className="text-sm text-muted-foreground">
-            Nhấn vào nút trên để bắt đầu khám phá
-          </p>
-        </div>
+        {/* Contact Card Section */}
+        <ContactSection />
+
+        {/* Footer Section */}
+        <Footer2 />
       </div>
     </main>
   );

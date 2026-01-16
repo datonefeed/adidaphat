@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Moon, Sun } from "lucide-react";
 import { getCategories } from "@/data/projects";
+import { useTheme } from "@/contexts/ThemeContext";
 
 interface NavbarProps {
   selectedCategory?: string;
@@ -46,7 +47,7 @@ const categoryLabels: Record<string, string> = {
 
 const Navbar = ({ selectedCategory, onCategoryChange }: NavbarProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isDark, setIsDark] = useState(false);
+  const { isDark, toggleTheme } = useTheme();
   const pathname = usePathname();
   
   const isHomePage = pathname === "/home";
@@ -61,17 +62,6 @@ const Navbar = ({ selectedCategory, onCategoryChange }: NavbarProps) => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  useEffect(() => {
-    const isDarkMode = document.documentElement.classList.contains("dark");
-    setIsDark(isDarkMode);
-  }, []);
-
-  const toggleTheme = () => {
-    const newIsDark = !isDark;
-    setIsDark(newIsDark);
-    document.documentElement.classList.toggle("dark", newIsDark);
-  };
 
   return (
     <>
