@@ -1,6 +1,7 @@
 "use client"
 
 import { memo, useEffect, useLayoutEffect, useMemo, useState } from "react"
+import Link from "next/link"
 import {
   AnimatePresence,
   motion,
@@ -324,22 +325,24 @@ function ThreeDPhotoCarousel() {
             Khám phá bộ sưu tập hình ảnh được tuyển chọn. Kéo để xoay carousel 
             và nhấn vào ảnh để xem toàn màn hình. Mỗi bức ảnh kể một câu chuyện riêng.
           </p>
-          <motion.button
-            whileHover={{ x: 10 }}
-            whileTap={{ scale: 0.95 }}
-            className="group inline-flex items-center gap-3 bg-foreground text-background px-8 py-4 rounded-full font-medium transition-all hover:gap-5"
-          >
-            <span>Xem Bộ Sưu Tập</span>
-            <svg 
-              xmlns="http://www.w3.org/2000/svg" 
-              className="h-5 w-5 transition-transform group-hover:translate-x-1" 
-              fill="none" 
-              viewBox="0 0 24 24" 
-              stroke="currentColor"
+          <Link href="/home">
+            <motion.button
+              whileHover={{ x: 10 }}
+              whileTap={{ scale: 0.95 }}
+              className="group inline-flex mt-4 items-center gap-3 bg-foreground text-background px-8 py-4 rounded-full font-medium transition-all hover:gap-5"
             >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </motion.button>
+              <span>Xem Bộ Sưu Tập</span>
+              <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                className="h-5 w-5 transition-transform group-hover:translate-x-1" 
+                fill="none" 
+                viewBox="0 0 24 24" 
+                stroke="currentColor"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </motion.button>
+          </Link>
         </motion.div>
 
         {/* Carousel */}
