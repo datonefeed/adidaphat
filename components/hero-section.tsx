@@ -16,7 +16,7 @@ const HeroSection = () => {
   ];
 
   const socialLinks = [
-    { icon: Facebook, href: '#' },
+    { icon: Facebook, href: 'https://www.facebook.com/hoa.thien.245167' },
     { icon: Instagram, href: '#' },
     { icon: Twitter, href: '#' },
     { icon: Linkedin, href: '#' },

@@ -10,6 +10,7 @@ import AboutUsSection from "@/components/about-us-section";
 import { DemoOne } from "@/components/clip-path-section";
 import Footer2 from "@/components/footer2";
 import ContactSection from "@/components/contact-section";
+import { TestimonialCardComponent } from "@/components/twitter-testimonial-cards";
 
 export default function LandingPage() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -42,6 +43,8 @@ export default function LandingPage() {
 
         {/* Clip Path Section */}
         <DemoOne />
+
+        <TestimonialCardComponent />
 
         {/* Contact Card Section */}
         <ContactSection />
