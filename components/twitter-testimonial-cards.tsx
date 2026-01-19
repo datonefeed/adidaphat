@@ -239,7 +239,13 @@ export default function Testimonials({ cards }: TestimonialsProps) {
 function TestimonialCardComponent() {
   return (
     <div className="flex min-h-[500px] w-full items-center justify-center bg-background p-8">
+      <div className="max-w-2xl mx-auto space-y-6">
+        <h2 className="text-5xl md:text-6xl text-center lg:text-7xl font-light text-foreground tracking-tight">
+            Qánh Giá
+        </h2>
+        <div className="w-24 h-1 bg-primary dark:bg-primary/80 space-y-6 mx-auto"></div>
       <Testimonials />
+      </div>
     </div>
   );
 }
